@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="loading" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>ohno.media</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#f3e7cf; --panel:#fbf3e2; --line:#3a2a1e; --text:#3a2a1e; --mute:#7a6553;
+    --hot:#e0692a; --hot2:#c9521d; --blue:#8cc4d6; --blue2:#5fa4bb; --purple:#7d5ba6; --lilac:#c9b6e0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font:400 17px/1.65 "DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+  .mono{font-family:"DM Sans",sans-serif;font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--hot2)}
+  .stripes{height:36px;background:linear-gradient(var(--purple) 0 25%,var(--hot2) 25% 50%,var(--hot) 50% 75%,var(--blue) 75%)}
+
+  header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:3px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .logo{font-family:Shrikhand,serif;font-size:28px;text-decoration:none;color:var(--hot2)}
+  .logo span{color:var(--purple)}
+  .links{display:flex;gap:26px}
+  .links a{text-decoration:none;font-size:15px;font-weight:700;color:var(--text);padding:6px 12px;border-radius:999px;transition:background .2s}
+  .links a:hover{background:#eadbbd}
+  .links a.on{background:var(--hot);color:var(--panel)}
+  .links a{white-space:nowrap}
+  @media(max-width:760px){.links{gap:4px}.links a{font-size:13px;padding:5px 9px}}
+  @media(max-width:560px){nav{height:auto;flex-direction:column;gap:8px;padding:12px 0}.links{flex-wrap:wrap;justify-content:center}}
+
+  .view{display:none;animation:fade .45s ease}
+  .view.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.view{animation:none}}
+
+  h1,h2,blockquote,.big,.stat b{font-family:Shrikhand,serif;font-weight:400}
+  .hero{padding:100px 28px 110px;position:relative;overflow:hidden}
+  .hero h1{max-width:720px;font-size:clamp(46px,7.6vw,96px);line-height:1;margin:18px 0 30px;color:var(--text)}
+  .hero h1 em{font-style:normal;color:var(--hot)}
+  .hero p{max-width:560px;font-size:20px;color:var(--mute)}
+  .sun{position:absolute;right:-150px;top:60px;width:440px;height:440px;border-radius:50%;z-index:-1;
+    background:repeating-linear-gradient(var(--purple) 0 24px,transparent 24px 34px,var(--hot2) 34px 58px,transparent 58px 68px,var(--hot) 68px 92px,transparent 92px 102px,var(--blue) 102px 126px,transparent 126px 136px);
+    -webkit-mask:linear-gradient(#000 0 0);opacity:.95}
+  .hero > *:not(.sun){position:relative}
+  @media(max-width:820px){.sun{width:260px;height:260px;right:-90px;top:20px;opacity:.35}}
+
+  .btns{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 24px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:3px solid var(--line);background:var(--panel);color:var(--text);box-shadow:4px 4px 0 var(--line);transition:transform .15s,box-shadow .15s}
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--line)}
+  .btn.p{background:var(--hot);color:var(--panel)}
+
+  section.block{padding:90px 0;background:var(--blue);border-top:3px solid var(--line)}
+  section.block .mono{color:var(--text)}
+  h2{font-size:clamp(32px,5vw,52px);line-height:1.08;margin:12px 0 24px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:40px}
+  .card{background:var(--panel);border:3px solid var(--line);border-radius:22px;padding:28px;box-shadow:6px 6px 0 var(--line);transition:transform .2s,box-shadow .2s}
+  .card:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--line)}
+  .card h3{font-size:20px;margin:12px 0 8px;font-weight:700}
+  .card p{color:var(--mute);font-size:15.5px}
+  .num{display:inline-block;font-weight:700;font-size:13px;background:var(--hot);color:var(--panel);padding:3px 11px;border-radius:999px}
+  .grid .card:nth-child(3n+2) .num{background:var(--blue2)}
+  .grid .card:nth-child(3n+3) .num{background:var(--purple)}
+
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;padding:0 0 100px}
+  .tile{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:220px;padding:26px;text-decoration:none;color:var(--text);border:3px solid var(--line);border-radius:26px;box-shadow:6px 6px 0 var(--line);transition:transform .15s,box-shadow .15s;overflow:hidden}
+  .tile:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--line)}
+  .tile .tag{align-self:flex-start;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;background:var(--panel);border:2px solid var(--line);border-radius:999px;padding:4px 14px}
+  .tile h3{font-family:Shrikhand,serif;font-weight:400;font-size:30px;line-height:1.05;margin-top:40px}
+  .tile .dom{font-weight:700;font-size:15px;margin-top:8px;opacity:.85}
+  .tile .arrow{position:absolute;top:22px;right:24px;font-size:26px;font-weight:700;transition:transform .15s}
+  .tile:hover .arrow{transform:translate(3px,-3px)}
+  .t1{background:var(--hot)} .t2{background:var(--purple);color:var(--panel)} .t3{background:var(--blue)} .t4{background:var(--panel)}
+  .t2 .tag{color:var(--text)}
+
+  .about-hero{padding:100px 28px 60px}
+  .about-hero h1{font-size:clamp(48px,8vw,100px);line-height:1;margin:16px 0 0}
+  .about-hero h1 span{color:var(--hot)}
+  .lede{font-size:clamp(20px,2.3vw,25px);line-height:1.5;max-width:800px;margin-top:30px;color:var(--text)}
+  .split{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;padding:70px 0;border-top:3px dotted var(--line)}
+  @media(max-width:820px){.split{grid-template-columns:1fr;gap:28px}}
+  .split p+p{margin-top:18px}
+  .split p{color:var(--mute)}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border:3px solid var(--line);border-radius:22px;overflow:hidden;margin:20px 0 70px;box-shadow:6px 6px 0 var(--line)}
+  .stat{padding:28px 26px;border-right:3px solid var(--line);background:var(--panel)}
+  .stat:nth-child(2){background:var(--blue)}
+  .stat:nth-child(3){background:var(--lilac)}
+  .stat:last-child{border-right:0}
+  .stat b{display:block;font-size:46px;line-height:1.1;color:var(--hot2)}
+  .stat:nth-child(2) b{color:var(--text)}
+  .stat b sup{color:var(--hot);font-size:24px}
+  .stat .mono{color:var(--text)}
+
+  .timeline{position:relative;margin:30px 0 0;padding-left:34px}
+  .timeline:before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:4px;border-radius:4px;background:linear-gradient(var(--hot2),var(--hot),var(--blue))}
+  .tl{position:relative;padding:0 0 40px}
+  .tl:before{content:"";position:absolute;left:-34px;top:6px;width:18px;height:18px;border-radius:50%;background:var(--panel);border:3px solid var(--line)}
+  .tl h3{font-size:22px;font-weight:700;margin:4px 0 6px}
+  .tl p{color:var(--mute);max-width:640px}
+  .tl.now:before{background:var(--hot)}
+
+  .contact{padding:110px 28px}
+  .contact .big{font-size:clamp(34px,6.5vw,72px);line-height:1.05;word-break:break-word;margin:22px 0}
+  .contact .big a{text-decoration:none;color:var(--hot)}
+  .copy{margin-top:8px;cursor:pointer;font:inherit;font-weight:700}
+
+  .pods{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+  .pod{display:flex;flex-direction:column;text-decoration:none;background:var(--panel);border:3px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:6px 6px 0 var(--line);transition:transform .2s,box-shadow .2s}
+  .pod:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--line)}
+  .pod-art{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border-bottom:3px solid var(--line);
+    background:linear-gradient(var(--bg) 0 46%,var(--hot2) 46% 58%,var(--hot) 58% 70%,var(--blue) 70% 82%,var(--bg) 82%)}
+  .pod-art.alt{background:linear-gradient(var(--lilac) 0 46%,var(--purple) 46% 58%,var(--hot) 58% 70%,var(--blue) 70% 82%,var(--lilac) 82%)}
+  .pod-art span{font-family:Shrikhand,serif;font-size:clamp(34px,5vw,54px);line-height:.95;text-align:center;color:var(--text);text-shadow:3px 3px 0 var(--panel)}
+  .pod-art.img{background:var(--bg);padding:0}
+  .pod-art.img img{width:100%;height:100%;object-fit:cover;display:block}
+  .pod-art.radio{background:var(--bg);padding:26px 34px}
+  .pod-art.radio img{object-fit:contain}
+  .pod-body{padding:26px 28px 30px}
+  .pod-body h3{font-size:25px;font-weight:700;margin:8px 0 8px}
+  .pod-body p{color:var(--mute)}
+  .pod-link{display:inline-block;margin-top:16px;font-weight:700;color:var(--hot2);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+
+  .credit{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;text-decoration:none;border:3px solid var(--line);border-radius:22px;padding:28px 30px;background:var(--blue);box-shadow:6px 6px 0 var(--line);transition:transform .2s,box-shadow .2s}
+  .credit:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--line)}
+  .credit .mono{color:var(--text)}
+  .credit h3{font-size:25px;font-weight:700;margin:8px 0}
+  .credit p{color:var(--text);max-width:620px}
+  .credit .pod-link{margin-top:0;color:var(--text)}
+  .credit.merch{background:var(--hot)}
+  .credit.merch:nth-child(1){background:var(--lilac)}
+  .credit.merch:nth-child(2){background:var(--panel)}
+  .credit.merch:nth-child(2) .pod-link{color:var(--hot2)}
+
+  footer{border-top:3px solid var(--line);padding:26px 0;color:var(--text);font-size:14px;font-weight:500}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer a{text-decoration:none}footer a:hover{color:var(--hot2)}
+  html.loading main,html.loading header,html.loading footer{opacity:0}
+  main,header,footer{transition:opacity .25s}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<nav>
+<a class="logo" data-edit="nav-a-1" href="#home">ohno<span>.</span>media</a>
+<div class="links">
+<a data-edit="nav-a-2" data-v="home" href="#home">Home</a>
+<a data-edit="nav-a-3" data-v="services" href="#services">Services</a>
+<a data-edit="nav-a-4" data-v="about-owen" href="#about-owen">About Owen</a>
+<a data-edit="nav-a-5" data-v="podcasts" href="#podcasts">Podcasts</a>
+<a data-edit="nav-a-6" data-link="nav-link-1" href="https://podcasttshirts.com" rel="noopener" target="_blank">Podcast T-Shirts ↗</a>
+<a data-edit="nav-a-7" data-link="nav-link-2" href="https://shopohno.com" rel="noopener" target="_blank">Merch ↗</a>
+<a data-edit="nav-a-8" data-v="contact" href="#contact">Contact</a>
+</div>
+</nav>
+</div>
+</header>
+<main>
+<!-- HOME -->
+<div class="view" id="v-home">
+<div class="hero wrap">
+<div aria-hidden="true" class="sun"></div>
+<div class="mono" data-edit="home-div-1">Audio · Production · Live Events</div>
+<h1 data-edit="home-h1-1">Oh no,<br/>it actually sounds <em>good.</em></h1>
+<p data-edit="home-p-1">ohno.media is Owen's little audio corner of the internet: live sound, events, and a couple of podcasts. Pull up a chair.</p>
+<div class="btns">
+<a class="btn p" data-edit="home-a-1" href="#contact">Start a project</a>
+<a class="btn" data-edit="home-a-2" href="#about-owen">About Owen</a>
+</div>
+</div>
+<div class="wrap">
+<div class="tiles">
+<a class="tile t1" data-link="home-link-1" href="https://ohnoradioshow.com" rel="noopener" target="_blank"><span class="arrow">↗</span><span class="tag" data-edit="home-span-1">Listen</span><div><h3 data-edit="home-h3-1">Oh No Radio Show</h3><div class="dom" data-edit="home-div-2">ohnoradioshow.com</div></div></a>
+<a class="tile t2" data-link="home-link-2" href="https://ohnowrestling.com" rel="noopener" target="_blank"><span class="arrow">↗</span><span class="tag" data-edit="home-span-2">Listen</span><div><h3 data-edit="home-h3-2">Oh No Wrestling</h3><div class="dom" data-edit="home-div-3">ohnowrestling.com</div></div></a>
+<a class="tile t3" data-link="home-link-3" href="https://podcasttshirts.com" rel="noopener" target="_blank"><span class="arrow">↗</span><span class="tag" data-edit="home-span-3">Shop</span><div><h3 data-edit="home-h3-3">Podcast T-Shirts</h3><div class="dom" data-edit="home-div-4">podcasttshirts.com</div></div></a>
+<a class="tile t4" data-link="home-link-4" href="https://shopohno.com" rel="noopener" target="_blank"><span class="arrow">↗</span><span class="tag" data-edit="home-span-4">Shop</span><div><h3 data-edit="home-h3-4">Oh No Merch</h3><div class="dom" data-edit="home-div-5">shopohno.com</div></div></a>
+</div>
+</div>
+<section class="block">
+<div class="wrap">
+<div class="mono" data-edit="home-div-6">Why ohno</div>
+<h2 data-edit="home-h2-1">Good sound.<br/>No drama.</h2>
+<div class="grid">
+<div class="card"><div class="num">01</div><h3 data-edit="home-h3-5">Been doing this a while</h3><p data-edit="home-p-2">Since 2005, in studios, clubs, theme parks and conference rooms. Most surprises have been seen before.</p></div>
+<div class="card"><div class="num">02</div><h3 data-edit="home-h3-6">Easy to work with</h3><p data-edit="home-p-3">Straight answers, fair prices, and a friendly face at the sound desk.</p></div>
+<div class="card"><div class="num">03</div><h3 data-edit="home-h3-7">Made for your room</h3><p data-edit="home-p-4">Every space is a little different, so the setup gets fitted to yours.</p></div>
+</div>
+</div>
+</section>
+</div>
+<!-- SERVICES -->
+<div class="view" id="v-services">
+<div class="about-hero wrap">
+<div class="mono" data-edit="services-div-1">What we do</div>
+<h1 data-edit="services-h1-1">Services<span>.</span></h1>
+<p class="lede" data-edit="services-p-1">From a single keynote mic to a multi-room production, ohno.media handles the audio so you can handle everything else.</p>
+</div>
+<div class="wrap" style="padding-bottom:100px">
+<div class="grid">
+<div class="card"><div class="num">/corporate</div><h3 data-edit="services-h3-1">Corporate Events</h3><p data-edit="services-p-2">Conferences, keynotes, town halls, galas and product launches, with audio that makes your speakers sound like they belong on stage.</p></div>
+<div class="card"><div class="num">/live</div><h3 data-edit="services-h3-2">Live Sound</h3><p data-edit="services-p-3">Front-of-house and monitor mixing for performances, parties and live entertainment of any size.</p></div>
+<div class="card"><div class="num">/hybrid</div><h3 data-edit="services-h3-3">Hybrid &amp; Streaming</h3><p data-edit="services-p-4">Clean, broadcast-ready audio for remote audiences, so the people at home hear it as well as the people in the room.</p></div>
+<div class="card"><div class="num">/studio</div><h3 data-edit="services-h3-4">Recording &amp; Post</h3><p data-edit="services-p-5">Recording, editing and mixing, with roots in the studio and the ears to match.</p></div>
+<div class="card"><div class="num">/design</div><h3 data-edit="services-h3-5">System Design</h3><p data-edit="services-p-6">Sound system planning and specification for venues, installations and recurring events.</p></div>
+<div class="card"><div class="num">/consult</div><h3 data-edit="services-h3-6">Consulting</h3><p data-edit="services-p-7">Planning an event and not sure what you need? Get straight answers from someone who's done it before.</p></div>
+</div>
+</div>
+</div>
+<!-- ABOUT OWEN -->
+<div class="view" id="v-about-owen">
+<div class="about-hero wrap">
+<div class="mono" data-edit="about-owen-div-1">About Owen</div>
+<h1 data-edit="about-owen-h1-1">Hey there, I'm Owen<span>.</span></h1>
+<p class="lede" data-edit="about-owen-p-1">I've been doing audio since 2005. It started as a fun gig, and it turned into a whole career.</p>
+</div>
+<div class="wrap">
+<div class="stats">
+<div class="stat"><b data-edit="about-owen-b-1">2005</b><span class="mono" data-edit="about-owen-span-1">First gig</span></div>
+<div class="stat"><b data-edit="about-owen-b-2">4</b><span class="mono" data-edit="about-owen-span-2">Kinds of rooms</span></div>
+<div class="stat"><b data-edit="about-owen-b-3">∞</b><span class="mono" data-edit="about-owen-span-3">Cables coiled</span></div>
+</div>
+<div class="split">
+<div>
+<div class="mono" data-edit="about-owen-div-2">The gist</div>
+<h2 data-edit="about-owen-h2-1">Just a guy who likes good sound.</h2>
+</div>
+<div>
+<p data-edit="about-owen-p-2">I started out in recording studios, spent some late nights in clubs, worked a stretch at theme parks, and these days I'm mostly doing corporate events. Every stop taught me something, usually the hard way.</p>
+<p data-edit="about-owen-p-3">What I like most is when everything just works: the mics are clear, the people on stage can relax, and nobody has to think about the audio at all.</p>
+<p data-edit="about-owen-p-4">When I'm not at a show, I'm probably recording one of my podcasts.</p>
+</div>
+</div>
+<div class="split">
+<div>
+<div class="mono" data-edit="about-owen-div-3">The road so far</div>
+<h2 data-edit="about-owen-h2-2">How I got here.</h2>
+</div>
+<div class="timeline">
+<div class="tl"><div class="mono" data-edit="about-owen-div-4">2005</div><h3 data-edit="about-owen-h3-1">Recording studios</h3><p data-edit="about-owen-p-5">Where I learned to really listen.</p></div>
+<div class="tl"><div class="mono" data-edit="about-owen-div-5">Then</div><h3 data-edit="about-owen-h3-2">Nightclubs</h3><p data-edit="about-owen-p-6">Loud rooms, late nights, plenty of quick fixes.</p></div>
+<div class="tl"><div class="mono" data-edit="about-owen-div-6">Then</div><h3 data-edit="about-owen-h3-3">Theme parks</h3><p data-edit="about-owen-p-7">Same show, every day, and it had to work every time.</p></div>
+<div class="tl now"><div class="mono" data-edit="about-owen-div-7">Now</div><h3 data-edit="about-owen-h3-4">Corporate events</h3><p data-edit="about-owen-p-8">Keeping things clear and easy for the folks on stage.</p></div>
+</div>
+</div>
+<div style="padding:40px 0 110px;border-top:3px dotted var(--line)">
+<p class="lede" data-edit="about-owen-p-9" style="margin:30px 0 30px">Got an event coming up, or just want to talk shop? Say hi.</p>
+<a class="btn p" data-edit="about-owen-a-1" href="#contact">Say hi</a>
+</div>
+</div>
+</div>
+<!-- PODCASTS -->
+<div class="view" id="v-podcasts">
+<div class="about-hero wrap">
+<div class="mono" data-edit="podcasts-div-1">On air</div>
+<h1 data-edit="podcasts-h1-1">Podcasts<span>.</span></h1>
+<p class="lede" data-edit="podcasts-p-1">When Owen isn't running sound for other people, he's making shows of his own. Grab some headphones.</p>
+</div>
+<div class="wrap" style="padding-bottom:110px">
+<div class="pods">
+<a class="pod" data-link="podcasts-link-1" href="https://ohnoradioshow.com" rel="noopener" target="_blank">
+<div class="pod-art img radio"><img alt="Oh No Radio Show logo" data-img="podcasts-img-1" src="radio.png"/></div>
+<div class="pod-body">
+<div class="mono" data-edit="podcasts-div-2">Podcast · 01</div>
+<h3 data-edit="podcasts-h3-1">The Oh No Radio Show</h3>
+<p data-edit="podcasts-p-2">Conversation, chaos and good audio. Owen's flagship show, with that radio-show energy and studio-grade sound.</p>
+<span class="pod-link" data-edit="podcasts-span-1">ohnoradioshow.com →</span>
+</div>
+</a>
+<a class="pod" data-link="podcasts-link-2" href="https://ohnowrestling.com" rel="noopener" target="_blank">
+<div class="pod-art img"><img alt="Oh No Wrestling logo" data-img="podcasts-img-2" src="wrestling.jpg"/></div>
+<div class="pod-body">
+<div class="mono" data-edit="podcasts-div-3">Podcast · 02</div>
+<h3 data-edit="podcasts-h3-2">Oh No Wrestling</h3>
+<p data-edit="podcasts-p-3">Big matches, bigger opinions. The wrestling talk show for fans who love the spectacle as much as the storylines.</p>
+<span class="pod-link" data-edit="podcasts-span-2">ohnowrestling.com →</span>
+</div>
+</a>
+</div>
+<div class="mono" data-edit="podcasts-div-4" style="margin-top:80px">Production credits</div>
+<h2 data-edit="podcasts-h2-1">Behind the board.</h2>
+<a class="credit" data-link="podcasts-link-3" href="https://fishandbrits.com" rel="noopener" target="_blank">
+<div>
+<div class="mono" data-edit="podcasts-div-5">Producer · Seasons 1 &amp; 2</div>
+<h3 data-edit="podcasts-h3-3">Fish and Brits</h3>
+<p data-edit="podcasts-p-4">Owen produced the first two seasons of Fish and Brits.</p>
+</div>
+<span class="pod-link" data-edit="podcasts-span-3">fishandbrits.com →</span>
+</a>
+<div class="mono" data-edit="podcasts-div-6" style="margin-top:80px">Merch</div>
+<h2 data-edit="podcasts-h2-2">Wear it loud.</h2>
+<div class="pods">
+<a class="credit merch" data-link="podcasts-link-4" href="https://shopohno.com" rel="noopener" target="_blank">
+<div>
+<div class="mono" data-edit="podcasts-div-7">Official store</div>
+<h3 data-edit="podcasts-h3-4">Oh No Merch</h3>
+<p data-edit="podcasts-p-5">Shirts and gear for the Oh No faithful.</p>
+<span class="pod-link" data-edit="podcasts-span-4" style="margin-top:16px">shopohno.com →</span>
+</div>
+</a>
+<a class="credit merch" data-link="podcasts-link-5" href="https://podcasttshirts.com" rel="noopener" target="_blank">
+<div>
+<div class="mono" data-edit="podcasts-div-8">Shop</div>
+<h3 data-edit="podcasts-h3-5">Podcast T-Shirts</h3>
+<p data-edit="podcasts-p-6">Tees for podcast fans and the shows they love.</p>
+<span class="pod-link" data-edit="podcasts-span-5" style="margin-top:16px">podcasttshirts.com →</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+<!-- CONTACT -->
+<div class="view" id="v-contact">
+<div class="contact wrap">
+<div class="mono" data-edit="contact-div-1">Let's talk</div>
+<div class="big"><a data-edit="contact-a-1" data-link="contact-link-1" href="mailto:ohnomediaowen@gmail.com">ohnomediaowen@gmail.com</a></div>
+<p class="lede" data-edit="contact-p-1" style="margin-top:10px">Tell us about your event: the date, the venue, the size of the crowd and what's keeping you up at night. We'll take it from there.</p>
+<div class="btns">
+<button class="btn copy" data-edit="contact-button-1" id="copyBtn">Copy email address</button>
+</div>
+</div>
+</div>
+</main>
+<div aria-hidden="true" class="stripes"></div>
+<footer>
+<div class="wrap">
+<span data-edit="footer-span-1">© <span id="yr"></span> ohno.media</span>
+<span><a data-edit="footer-a-1" data-link="footer-link-1" href="https://shopohno.com" rel="noopener" target="_blank">Oh No Merch</a> · <a data-edit="footer-a-2" data-link="footer-link-2" href="https://podcasttshirts.com" rel="noopener" target="_blank">Podcast T-Shirts</a> · <a data-edit="footer-a-3" data-link="footer-link-3" href="https://ohnoradioshow.com" rel="noopener" target="_blank">Radio Show</a> · <a data-edit="footer-a-4" data-link="footer-link-4" href="https://ohnowrestling.com" rel="noopener" target="_blank">Wrestling</a></span>
+</div>
+</footer>
+<script>
+  // hash routing
+  const views = ['home','services','about-owen','podcasts','contact'];
+  function show() {
+    let v = (location.hash || '#home').slice(1);
+    if (!views.includes(v)) v = 'home';
+    document.querySelectorAll('.view').forEach(el => el.classList.toggle('on', el.id === 'v-' + v));
+    document.querySelectorAll('.links a').forEach(a => a.classList.toggle('on', a.dataset.v === v));
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', show);
+  show();
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  document.getElementById('copyBtn').addEventListener('click', async e => {
+    try { await navigator.clipboard.writeText(document.querySelector('.big a').textContent.trim()); e.target.textContent = 'Copied ✓'; }
+    catch { e.target.textContent = 'ohnomediaowen@gmail.com'; }
+  });
+</script>
+<script src="/site.js"></script>
+</body>
+</html>
