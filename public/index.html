@@ -360,6 +360,16 @@
   .live-note{color:var(--mute)}
   footer{background:var(--deep);color:var(--cream);border-top:0}
   footer a:hover{color:var(--mus)}
+  /* logo tiles (colors matched to each show) */
+  .tile{min-height:300px}
+  .tile-logo{position:relative;z-index:1;display:block;width:110%;max-width:none;height:auto;margin:10px -5% 4px;filter:drop-shadow(3px 4px 0 rgba(0,0,0,.35));transition:transform .25s ease}
+  .tile:hover .tile-logo{transform:rotate(-2deg) scale(1.04)}
+  .t1 h3,.t2 h3{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .t1{background:radial-gradient(ellipse at 50% 45%,#8a3a1f 0,#6b2a17 70%);color:#f6e6c4}
+  .t1 .dom{color:#f6c27a;opacity:1}
+  .t2{background:radial-gradient(ellipse at 50% 45%,#2a86e6 0,#1f5fc0 75%);color:#f6ead2}
+  .tile-logo-wr{width:112%;margin:0 -6%;filter:saturate(1.1) contrast(1.05);-webkit-mask-image:radial-gradient(ellipse 58% 62% at 50% 50%,#000 72%,transparent 100%);mask-image:radial-gradient(ellipse 58% 62% at 50% 50%,#000 72%,transparent 100%)}
+  .t2 .dom{opacity:1}
   html.loading main,html.loading header,html.loading footer{opacity:0}
   main,header,footer{transition:opacity .25s}
 </style>
@@ -410,8 +420,8 @@
 </section>
 <div class="wrap">
 <div class="tiles">
-<a class="tile t1" data-link="home-link-1" href="https://ohnoradioshow.com" rel="noopener" target="_blank"><span class="arrow">↗</span><span class="tag" data-edit="home-span-1">Listen</span><div><h3 data-edit="home-h3-1">Oh No Radio Show</h3><div class="dom" data-edit="home-div-2">ohnoradioshow.com</div></div></a>
-<a class="tile t2" data-link="home-link-2" href="https://ohnowrestling.com" rel="noopener" target="_blank"><span class="arrow">↗</span><span class="tag" data-edit="home-span-2">Listen</span><div><h3 data-edit="home-h3-2">Oh No Wrestling</h3><div class="dom" data-edit="home-div-3">ohnowrestling.com</div></div></a>
+<a class="tile t1" data-link="home-link-1" href="https://ohnoradioshow.com" rel="noopener" target="_blank"><span class="arrow">↗</span><span class="tag" data-edit="home-span-1">Listen</span><img alt="Oh No Radio Show" class="tile-logo" data-img="home-img-radio" src="radio-tile.png"/><div><h3 data-edit="home-h3-1">Oh No Radio Show</h3><div class="dom" data-edit="home-div-2">ohnoradioshow.com</div></div></a>
+<a class="tile t2" data-link="home-link-2" href="https://ohnowrestling.com" rel="noopener" target="_blank"><span class="arrow">↗</span><span class="tag" data-edit="home-span-2">Listen</span><img alt="Oh No Wrestling" class="tile-logo tile-logo-wr" data-img="home-img-wrestling" src="wrestling-tile.jpg"/><div><h3 data-edit="home-h3-2">Oh No Wrestling</h3><div class="dom" data-edit="home-div-3">ohnowrestling.com</div></div></a>
 <a class="tile t3" data-link="home-link-3" href="https://podcasttshirts.com" rel="noopener" target="_blank"><span class="arrow">↗</span><span class="tag" data-edit="home-span-3">Shop</span><div><h3 data-edit="home-h3-3">Podcast T-Shirts</h3><div class="dom" data-edit="home-div-4">podcasttshirts.com</div></div></a>
 <a class="tile t4" data-link="home-link-4" href="https://shopohno.com" rel="noopener" target="_blank"><span class="arrow">↗</span><span class="tag" data-edit="home-span-4">Shop</span><div><h3 data-edit="home-h3-4">Oh No Merch</h3><div class="dom" data-edit="home-div-5">shopohno.com</div></div></a>
 </div>
