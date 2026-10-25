@@ -5,13 +5,15 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>ohno.media</title>
+<link rel="icon" type="image/png" href="/favicon.png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Shrikhand&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Shrikhand&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
-    --bg:#f3e7cf; --panel:#fbf3e2; --line:#3a2a1e; --text:#3a2a1e; --mute:#7a6553;
-    --hot:#e0692a; --hot2:#c9521d; --blue:#8cc4d6; --blue2:#5fa4bb; --purple:#7d5ba6; --lilac:#c9b6e0;
+    --bg:#efe4cc; --panel:#f8f0de; --line:#141015; --text:#1c1426; --mute:#5e5068;
+    --hot:#c8352a; --hot2:#a8281f; --blue:#6c45b8; --blue2:#4b2a8c; --purple:#33175c; --lilac:#c9b8e8;
+    --deep:#24103f; --cream:#e9dcc0;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -143,6 +145,71 @@
   footer{border-top:3px solid var(--line);padding:26px 0;color:var(--text);font-size:14px;font-weight:500}
   footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   footer a{text-decoration:none}footer a:hover{color:var(--hot2)}
+
+  /* ===== OHNO .media rebrand: purple, cream, red, black ===== */
+  h1,h2,blockquote,.big,.stat b,.tile h3{font-family:"Archivo Black","Arial Black",sans-serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+  .stripes{height:30px;background:linear-gradient(var(--line) 0 25%,var(--hot) 25% 50%,var(--cream) 50% 75%,var(--blue) 75%)}
+  header{background:var(--deep);border-bottom:4px solid var(--line)}
+  nav{height:78px}
+  .logo{display:flex;align-items:center;margin-right:18px;flex:none}
+  .logo img{height:54px;width:auto;display:block;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.35))}
+  .links a{color:var(--cream)}
+  .links a:hover{background:rgba(233,220,192,.14)}
+  .links a.on{background:var(--hot);color:var(--cream)}
+  .nav-live{color:var(--cream)}
+  .nav-live:first-letter{color:var(--hot)}
+  .links a.nav-live.on:first-letter{color:var(--cream)}
+  @media(max-width:560px){.logo img{height:46px}}
+
+  .hero-band{background:var(--deep) repeating-conic-gradient(from 0deg at 50% 38%,#2c1450 0deg 9deg,#3a1b68 9deg 18deg);border-bottom:4px solid var(--line);position:relative;overflow:hidden}
+  .hero-band:after{content:"";position:absolute;left:-5%;right:-5%;bottom:56px;height:54px;transform:rotate(-4deg);background:linear-gradient(var(--line) 0 25%,var(--hot) 25% 50%,var(--cream) 50% 75%,var(--blue) 75%);opacity:.9;pointer-events:none}
+  .hero{padding:56px 28px 150px;text-align:center;display:flex;flex-direction:column;align-items:center;z-index:1}
+  .hero > *{position:relative;z-index:1}
+  .hero-logo{width:min(640px,92%);height:auto;filter:drop-shadow(6px 8px 0 rgba(0,0,0,.35));margin-bottom:10px}
+  .hero .mono{color:var(--cream);opacity:.9}
+  .hero h1{color:var(--cream);font-size:clamp(38px,6vw,72px);max-width:900px;margin:14px auto 22px;text-shadow:4px 4px 0 var(--line)}
+  .hero h1 em{font-style:italic;color:var(--hot)}
+  .hero p{color:var(--cream);opacity:.92;margin:0 auto}
+  .btns{justify-content:center}
+  .btn{border-color:var(--line);box-shadow:4px 4px 0 var(--line)}
+  .btn.p{background:var(--hot);color:var(--cream)}
+  .live-btn{background:var(--line);color:var(--cream)}
+  .live-btn:hover{background:var(--hot)}
+  .tiles{margin-top:-90px;position:relative;z-index:2}
+  .t1{background:var(--hot);color:var(--cream)} .t2{background:var(--blue);color:var(--cream)} .t3{background:var(--panel)} .t4{background:var(--line);color:var(--cream)}
+  .t1 .tag,.t2 .tag,.t4 .tag{color:var(--text)}
+  .tile{box-shadow:6px 6px 0 var(--line)}
+  section.block{background:var(--deep) repeating-conic-gradient(from 0deg at 50% 0%,#2c1450 0deg 9deg,#3a1b68 9deg 18deg)}
+  section.block .mono{color:var(--cream)}
+  section.block h2{color:var(--cream);text-shadow:3px 3px 0 var(--line)}
+  .mono{color:var(--hot)}
+  .stat:nth-child(2){background:var(--blue)} .stat:nth-child(2) b,.stat:nth-child(2) .mono{color:var(--cream)}
+  .stat:nth-child(3){background:var(--lilac)}
+  .about-hero h1 span,.contact .big a{color:var(--hot)}
+  .credit{background:var(--lilac)}
+  .credit.merch:nth-child(1){background:var(--hot)} .credit.merch:nth-child(1) *{color:var(--cream)}
+  footer{background:var(--deep);color:var(--cream);border-top:4px solid var(--line)}
+  footer a:hover{color:var(--hot)}
+  .pod-art.radio{background:var(--cream)}
+
+  /* ===== Watch Live ===== */
+  .live-head{padding-bottom:30px}
+  .live-head h1 span{color:var(--hot)}
+  .live-wrap{padding-bottom:100px}
+  .live-switch{display:flex;gap:10px;margin-bottom:18px}
+  .live-switch:empty{display:none}
+  .live-switch button{font:700 15px "DM Sans",sans-serif;padding:10px 20px;border-radius:999px;border:3px solid var(--line);background:var(--panel);color:var(--text);cursor:pointer;box-shadow:3px 3px 0 var(--line)}
+  .live-switch button[aria-selected="true"]{background:var(--blue);color:var(--cream)}
+  .live-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;align-items:stretch}
+  .live-player,.live-chat{border:4px solid var(--line);border-radius:18px;overflow:hidden;background:var(--deep);box-shadow:6px 6px 0 var(--line);position:relative}
+  .live-player{aspect-ratio:16/9}
+  .live-chat{min-height:420px}
+  .live-player iframe,.live-chat iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+  .live-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:var(--cream);font-weight:700}
+  .live-placeholder a{color:var(--cream)}
+  .live-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:22px}
+  .live-note{color:var(--mute);font-size:14px}
+  @media(max-width:900px){.live-grid{grid-template-columns:1fr}.live-chat{min-height:0;height:480px}}
   html.loading main,html.loading header,html.loading footer{opacity:0}
   main,header,footer{transition:opacity .25s}
 </style>
@@ -151,12 +218,13 @@
 <header>
 <div class="wrap">
 <nav>
-<a class="logo" data-edit="nav-a-1" href="#home">ohno<span>.</span>media</a>
+<a class="logo" href="#home"><img alt="OHNO .media" data-img="nav-img-logo" src="ohno-logo-nav.png"/></a>
 <div class="links">
 <a data-edit="nav-a-2" data-v="home" href="#home">Home</a>
 <a data-edit="nav-a-3" data-v="services" href="#services">Services</a>
 <a data-edit="nav-a-4" data-v="about-owen" href="#about-owen">About Owen</a>
 <a data-edit="nav-a-5" data-v="podcasts" href="#podcasts">Podcasts</a>
+<a class="nav-live" data-edit="nav-a-live" data-v="live" href="#live">● Watch Live</a>
 <a data-edit="nav-a-6" data-link="nav-link-1" href="https://podcasttshirts.com" rel="noopener" target="_blank">Podcast T-Shirts ↗</a>
 <a data-edit="nav-a-7" data-link="nav-link-2" href="https://shopohno.com" rel="noopener" target="_blank">Merch ↗</a>
 <a data-edit="nav-a-8" data-v="contact" href="#contact">Contact</a>
@@ -167,16 +235,19 @@
 <main>
 <!-- HOME -->
 <div class="view" id="v-home">
+<section class="hero-band">
 <div class="hero wrap">
-<div aria-hidden="true" class="sun"></div>
+<img alt="OHNO .media" class="hero-logo" data-img="home-img-logo" src="ohno-logo.png"/>
 <div class="mono" data-edit="home-div-1">Audio · Production · Live Events</div>
 <h1 data-edit="home-h1-1">Oh no,<br/>it actually sounds <em>good.</em></h1>
 <p data-edit="home-p-1">ohno.media is Owen's little audio corner of the internet: live sound, events, and a couple of podcasts. Pull up a chair.</p>
 <div class="btns">
 <a class="btn p" data-edit="home-a-1" href="#contact">Start a project</a>
 <a class="btn" data-edit="home-a-2" href="#about-owen">About Owen</a>
+<a class="btn live-btn" data-edit="home-a-live" href="#live">● Watch live</a>
 </div>
 </div>
+</section>
 <div class="wrap">
 <div class="tiles">
 <a class="tile t1" data-link="home-link-1" href="https://ohnoradioshow.com" rel="noopener" target="_blank"><span class="arrow">↗</span><span class="tag" data-edit="home-span-1">Listen</span><div><h3 data-edit="home-h3-1">Oh No Radio Show</h3><div class="dom" data-edit="home-div-2">ohnoradioshow.com</div></div></a>
@@ -318,6 +389,30 @@
 </div>
 </div>
 </div>
+<!-- WATCH LIVE -->
+<div class="view" id="v-live">
+<div class="about-hero wrap live-head">
+<div class="mono" data-edit="live-div-1">Oh No Radio Show · Live</div>
+<h1 data-edit="live-h1-1">Watch live<span>.</span></h1>
+<p class="lede" data-edit="live-p-1">Catch the Oh No Radio Show as it happens. Hang out in the chat, say hi, and heckle responsibly.</p>
+</div>
+<div class="wrap live-wrap">
+<div aria-label="Choose where to watch" class="live-switch" role="tablist" id="liveSwitch"></div>
+<div class="live-grid">
+<div class="live-player" id="livePlayer"><div class="live-placeholder">Loading the stream…</div></div>
+<div class="live-chat" id="liveChat"><div class="live-placeholder">Loading chat…</div></div>
+</div>
+<div class="live-foot">
+<span class="live-note" id="liveNote"></span>
+<div class="social-row">
+<a class="social" data-link="live-link-twitch" href="https://www.twitch.tv/onrslive" rel="noopener" target="_blank"><span data-edit="live-twitch-label">Open on Twitch</span> ↗</a>
+<a class="social" data-link="live-link-youtube" href="https://www.youtube.com/@ohnomedia" rel="noopener" target="_blank"><span data-edit="live-youtube-label">YouTube channel</span> ↗</a>
+<a class="social" data-link="live-link-patreon" href="https://www.patreon.com/onrs" rel="noopener" target="_blank"><span data-edit="live-patreon-label">Support on Patreon</span> ↗</a>
+<a class="social" data-link="live-link-facebook" href="https://www.facebook.com/groups/ohnoradioshow" rel="noopener" target="_blank"><span data-edit="live-facebook-label">Facebook group</span> ↗</a>
+</div>
+</div>
+</div>
+</div>
 <!-- CONTACT -->
 <div class="view" id="v-contact">
 <div class="contact wrap">
@@ -339,7 +434,7 @@
 </footer>
 <script>
   // hash routing
-  const views = ['home','services','about-owen','podcasts','contact'];
+  const views = ['home','services','about-owen','podcasts','live','contact'];
   function show() {
     let v = (location.hash || '#home').slice(1);
     if (!views.includes(v)) v = 'home';
@@ -358,5 +453,6 @@
   });
 </script>
 <script src="/site.js"></script>
+<script src="/live.js"></script>
 </body>
 </html>
