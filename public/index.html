@@ -124,6 +124,11 @@
   .pod-body p{color:var(--mute)}
   .pod-link{display:inline-block;margin-top:16px;font-weight:700;color:var(--hot2);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
 
+  .pod-socials{margin-top:20px;padding-top:16px;border-top:3px dotted var(--line)}
+  .social-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .social{display:inline-flex;align-items:center;gap:4px;text-decoration:none;font-weight:700;font-size:14px;padding:7px 13px;border:2px solid var(--line);border-radius:999px;background:var(--bg);color:var(--text);box-shadow:3px 3px 0 var(--line);transition:transform .15s,box-shadow .15s}
+  .social:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--line);background:var(--hot);color:var(--panel)}
+  a.pod-art{text-decoration:none}
   .credit{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;text-decoration:none;border:3px solid var(--line);border-radius:22px;padding:28px 30px;background:var(--blue);box-shadow:6px 6px 0 var(--line);transition:transform .2s,box-shadow .2s}
   .credit:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--line)}
   .credit .mono{color:var(--text)}
@@ -261,15 +266,16 @@
 </div>
 <div class="wrap" style="padding-bottom:110px">
 <div class="pods">
-<a class="pod" data-link="podcasts-link-1" href="https://ohnoradioshow.com" rel="noopener" target="_blank">
-<div class="pod-art img radio"><img alt="Oh No Radio Show logo" data-img="podcasts-img-1" src="radio.png"/></div>
+<div class="pod">
+<a class="pod-art img radio" data-link="podcasts-radio-art" href="https://ohnoradioshow.com" rel="noopener" target="_blank"><img alt="Oh No Radio Show logo" data-img="podcasts-img-1" src="radio.png"/></a>
 <div class="pod-body">
 <div class="mono" data-edit="podcasts-div-2">Podcast · 01</div>
 <h3 data-edit="podcasts-h3-1">The Oh No Radio Show</h3>
 <p data-edit="podcasts-p-2">Conversation, chaos and good audio. Owen's flagship show, with that radio-show energy and studio-grade sound.</p>
-<span class="pod-link" data-edit="podcasts-span-1">ohnoradioshow.com →</span>
+<a class="pod-link" data-link="podcasts-link-1" href="https://ohnoradioshow.com" rel="noopener" target="_blank"><span data-edit="podcasts-span-1">ohnoradioshow.com →</span></a>
+<div class="pod-socials"><div class="mono" data-edit="podcasts-radio-socials-label">Watch, listen &amp; join in</div><div class="social-row"><a class="social" data-link="podcasts-radio-twitch" href="https://www.twitch.tv/onrslive" rel="noopener" target="_blank"><span data-edit="podcasts-radio-twitch-label">Twitch</span> ↗</a><a class="social" data-link="podcasts-radio-youtube" href="https://www.youtube.com/@ohnomedia" rel="noopener" target="_blank"><span data-edit="podcasts-radio-youtube-label">YouTube</span> ↗</a><a class="social" data-link="podcasts-radio-patreon" href="https://www.patreon.com/onrs" rel="noopener" target="_blank"><span data-edit="podcasts-radio-patreon-label">Patreon</span> ↗</a><a class="social" data-link="podcasts-radio-facebook" href="https://www.facebook.com/groups/ohnoradioshow" rel="noopener" target="_blank"><span data-edit="podcasts-radio-facebook-label">Facebook group</span> ↗</a></div></div>
 </div>
-</a>
+</div>
 <a class="pod" data-link="podcasts-link-2" href="https://ohnowrestling.com" rel="noopener" target="_blank">
 <div class="pod-art img"><img alt="Oh No Wrestling logo" data-img="podcasts-img-2" src="wrestling.jpg"/></div>
 <div class="pod-body">
