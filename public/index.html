@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Shrikhand&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;600;700&amp;family=Archivo+Black&amp;family=Shrikhand&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
     --bg:#efe4cc; --panel:#f8f0de; --line:#141015; --text:#1c1426; --mute:#5e5068;
@@ -231,6 +231,83 @@
   .stripes{height:22px}
   .links{gap:2px}
   .links a{padding:6px 11px}
+
+  /* ===== Neon night: OHNO .media neon sign ===== */
+  :root{
+    --bg:#150a24; --panel:#1f1135; --line:#3d2766; --text:#f1e7da; --mute:#bba9cc;
+    --hot:#ff6b5b; --hot2:#ff8676; --blue:#7b4ae2; --blue2:#b48cf6; --purple:#d2b8ff; --lilac:#2b1a4a;
+    --deep:#0f071b; --cream:#f1e7da;
+    --glow-v:0 0 6px rgba(180,140,246,.55),0 0 22px rgba(123,74,226,.45);
+    --glow-c:0 0 6px rgba(255,107,91,.6),0 0 20px rgba(255,107,91,.35);
+  }
+  body{background:var(--bg) radial-gradient(ellipse at 50% -10%,#2a1350 0,transparent 60%) no-repeat;color:var(--text)}
+  h1,h2,blockquote,.big,.stat b,.tile h3{font-family:Antonio,"Archivo Black",sans-serif;font-style:normal;font-weight:600;letter-spacing:.01em;text-transform:uppercase}
+  h1,h2{color:var(--cream);text-shadow:var(--glow-v)}
+  .mono{color:var(--hot);text-shadow:0 0 10px rgba(255,107,91,.35)}
+  .stripes{height:auto;background:none;border-top:3px solid var(--hot);box-shadow:var(--glow-c);margin-top:0}
+  header{background:rgba(21,10,36,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(180,140,246,.15)}
+  .logo img{height:58px;filter:none;mix-blend-mode:screen;border-radius:6px}
+  .links a{color:var(--text)}
+  .links a:hover{background:rgba(180,140,246,.14);color:#fff}
+  .links a.on{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px var(--blue2),var(--glow-v)}
+  .nav-live:first-letter{color:var(--hot)}
+  .hero-band{background:radial-gradient(ellipse at 50% 40%,#2c1554 0,#1a0c2e 55%,#120820 100%);border-bottom:1px solid var(--line)}
+  .hero-band:after{bottom:70px;height:3px;transform:none;left:12%;right:12%;background:var(--hot);opacity:1;box-shadow:var(--glow-c)}
+  .hero{padding:40px 28px 150px}
+  .hero-logo{width:min(720px,96%);filter:none;mix-blend-mode:screen;margin-bottom:0;-webkit-mask-image:radial-gradient(ellipse 72% 70% at 50% 50%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 72% 70% at 50% 50%,#000 62%,transparent 100%)}
+  .hero .mono{color:var(--hot)}
+  .hero h1{color:var(--cream);text-shadow:var(--glow-v);font-size:clamp(40px,6vw,76px)}
+  .hero h1 em{font-style:normal;color:var(--hot);text-shadow:var(--glow-c)}
+  .hero p{color:var(--mute)}
+  .btn{background:transparent;color:var(--text);border:2px solid var(--blue2);box-shadow:var(--glow-v);transition:transform .15s,box-shadow .15s,background .15s}
+  .btn:hover{transform:translateY(-2px);background:rgba(180,140,246,.12);box-shadow:0 0 8px rgba(180,140,246,.8),0 0 30px rgba(123,74,226,.6)}
+  .btn.p{background:var(--hot);color:#1a0c2e;border-color:var(--hot);box-shadow:var(--glow-c)}
+  .btn.p:hover{background:var(--hot2)}
+  .live-btn{background:transparent;color:var(--text);border-color:var(--hot);box-shadow:var(--glow-c)}
+  .live-btn:hover{background:rgba(255,107,91,.12)}
+  .card,.tile,.pod,.credit,.stats{background:var(--panel);border:1px solid var(--line);box-shadow:0 0 0 1px rgba(180,140,246,.08),0 10px 30px rgba(0,0,0,.35)}
+  .card:hover,.tile:hover,.pod:hover,.credit:hover{transform:translateY(-3px);box-shadow:0 0 0 1px var(--blue2),var(--glow-v)}
+  .card p,.split p,.tl p,.pod-body p{color:var(--mute)}
+  .num{background:transparent;color:var(--hot);border:1.5px solid var(--hot);box-shadow:var(--glow-c)}
+  .grid .card:nth-child(3n+2) .num,.grid .card:nth-child(3n+3) .num{color:var(--blue2);border-color:var(--blue2);background:transparent;box-shadow:var(--glow-v)}
+  .tiles{margin-top:-90px}
+  .t1,.t2,.t3,.t4{background:var(--panel);color:var(--text)}
+  .t1{box-shadow:inset 0 0 0 2px var(--hot),var(--glow-c)} .t2{box-shadow:inset 0 0 0 2px var(--blue2),var(--glow-v)}
+  .t3{box-shadow:inset 0 0 0 2px var(--hot),var(--glow-c)} .t4{box-shadow:inset 0 0 0 2px var(--blue2),var(--glow-v)}
+  .tile h3{color:var(--cream);text-shadow:var(--glow-v)}
+  .tile .tag{background:transparent;color:var(--text);border:1.5px solid var(--line)}
+  .t1 .tag,.t2 .tag,.t4 .tag{color:var(--text)}
+  .tile .dom{color:var(--mute)}
+  section.block{background:transparent;border-top:1px solid var(--line)}
+  section.block .mono{color:var(--hot)}
+  section.block h2{color:var(--cream);text-shadow:var(--glow-v)}
+  .stat{background:var(--panel);border-right:1px solid var(--line)}
+  .stat:nth-child(2),.stat:nth-child(3){background:var(--panel)}
+  .stat b,.stat:nth-child(2) b{color:var(--cream);text-shadow:var(--glow-v)}
+  .stat .mono,.stat:nth-child(2) .mono{color:var(--mute);text-shadow:none}
+  .split{border-top:1px dotted var(--line)}
+  .timeline:before{background:linear-gradient(var(--hot),var(--blue2));box-shadow:var(--glow-v)}
+  .tl:before{background:var(--bg);border:2px solid var(--blue2)}
+  .tl.now:before{background:var(--hot);border-color:var(--hot);box-shadow:var(--glow-c)}
+  .about-hero h1 span,.live-head h1 span{color:var(--hot);text-shadow:var(--glow-c)}
+  .lede{color:var(--text)}
+  .pod-art{border-bottom:1px solid var(--line)}
+  .pod-art.radio{background:#f1e7da}
+  .pod-link{color:var(--hot2)}
+  .pod-socials{border-top:1px dotted var(--line)}
+  .social{background:transparent;color:var(--text);border:1.5px solid var(--blue2);box-shadow:none}
+  .social:hover{background:rgba(180,140,246,.15);color:#fff;box-shadow:var(--glow-v);transform:translateY(-2px)}
+  .credit,.credit.merch,.credit.merch:nth-child(1),.credit.merch:nth-child(2){background:var(--panel)}
+  .credit *,.credit.merch:nth-child(1) *{color:var(--text)}
+  .credit .pod-link,.credit.merch:nth-child(2) .pod-link{color:var(--hot2)}
+  .contact .big a{color:var(--hot);text-shadow:var(--glow-c)}
+  .copy{color:var(--text)}
+  .live-switch button{background:transparent;color:var(--text);border:2px solid var(--blue2);box-shadow:none}
+  .live-switch button[aria-selected="true"]{background:var(--blue);color:#fff;box-shadow:var(--glow-v)}
+  .live-player,.live-chat{border:1px solid var(--blue2);box-shadow:var(--glow-v);background:#0d0618}
+  .live-note{color:var(--mute)}
+  footer{background:var(--deep);color:var(--mute);border-top:1px solid var(--line)}
+  footer a:hover{color:var(--hot)}
   html.loading main,html.loading header,html.loading footer{opacity:0}
   main,header,footer{transition:opacity .25s}
 </style>
@@ -239,7 +316,7 @@
 <header>
 <div class="wrap">
 <nav>
-<a class="logo" href="#home"><img alt="OHNO .media" data-img="nav-img-logo" src="ohno-logo-nav.png"/></a>
+<a class="logo" href="#home"><img alt="OHNO .media" data-img="nav-img-logo" src="ohno-neon-nav.jpg"/></a>
 <div class="links">
 <a data-edit="nav-a-2" data-v="home" href="#home">Home</a>
 <a data-edit="nav-a-3" data-v="services" href="#services">Services</a>
@@ -258,7 +335,7 @@
 <div class="view" id="v-home">
 <section class="hero-band">
 <div class="hero wrap">
-<img alt="OHNO .media" class="hero-logo" data-img="home-img-logo" src="ohno-logo.png"/>
+<img alt="OHNO .media" class="hero-logo" data-img="home-img-logo" src="ohno-neon.jpg"/>
 <div class="mono" data-edit="home-div-1">Audio · Production · Live Events</div>
 <h1 data-edit="home-h1-1">Oh no,<br/>it actually sounds <em>good.</em></h1>
 <p data-edit="home-p-1">ohno.media is Owen's little audio corner of the internet: live sound, events, and a couple of podcasts. Pull up a chair.</p>
