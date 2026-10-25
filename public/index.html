@@ -150,7 +150,9 @@
   h1,h2,blockquote,.big,.stat b,.tile h3{font-family:"Archivo Black","Arial Black",sans-serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
   .stripes{height:30px;background:linear-gradient(var(--line) 0 25%,var(--hot) 25% 50%,var(--cream) 50% 75%,var(--blue) 75%)}
   header{background:var(--deep);border-bottom:4px solid var(--line)}
-  nav{height:78px}
+  nav{height:auto;min-height:78px;padding:8px 0}
+  .links{flex-wrap:wrap;justify-content:flex-end;row-gap:6px}
+  @media(max-width:560px){.links{justify-content:center}header{position:static}}
   .logo{display:flex;align-items:center;margin-right:18px;flex:none}
   .logo img{height:54px;width:auto;display:block;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.35))}
   .links a{color:var(--cream)}
