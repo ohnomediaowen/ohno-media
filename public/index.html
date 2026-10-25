@@ -289,6 +289,8 @@
   @media(max-width:560px){.hero{padding-bottom:440px}.arch{bottom:14%;height:250px;width:190px}.pl-mon{width:190px;right:calc(50% + 10px)}
     .pl-pothos{width:62px;top:-70px;left:-14px}.pl-pothos2{width:66px;top:-80px;right:-12px}
     .tile{border-radius:110px 110px 24px 24px;min-height:220px}}
+  .arch{background:#1d1660}
+  .skyline{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%;display:block}
   /* buttons */
   .btn{background:var(--cream);color:var(--line);border:3px solid var(--line);box-shadow:4px 4px 0 var(--line);transition:transform .15s,box-shadow .15s}
   .btn:hover{transform:translate(-2px,-2px);background:var(--cream);box-shadow:6px 6px 0 var(--line)}
@@ -385,7 +387,7 @@
 <div class="view" id="v-home">
 <section class="hero-band">
 <div aria-hidden="true" class="room">
-<div class="arch"><div class="sun"></div><div class="hills"></div></div>
+<div class="arch"><img alt="" class="skyline" src="skyline.svg"/></div>
 <div class="shelf"></div>
 <img alt="" class="pl pl-mon" src="plant-monstera.svg"/>
 <img alt="" class="pl pl-snake" src="plant-snake.svg"/>
